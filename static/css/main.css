@@ -1,0 +1,106 @@
+body{
+margin:0px;
+background-color:#333;
+}
+#title{
+ height:50px;
+ width:100%;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ position:absolute;
+ top:0px;
+ color:white;
+ font-size:30px;
+}
+#top{
+height:100px;
+width:50%;
+align-items:center;
+justify-content:center;
+position:absolute;
+font-size:20px;
+color:lightgrey;
+text-shadow: 2px 2px 5px white;
+left:40%;
+top:10%;
+}
+
+#left{
+ height:300px;
+ width:20%;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ position:absolute;
+ left:10%;
+ top:20%;
+}
+#center{
+ height:300px;
+ width:30%;
+ display:flex;
+ align-items:center;
+ text-align:left;
+ justify-content:center;
+ position:absolute;
+ left:25%;
+ top:20%;
+}
+#right{
+ height:400px;
+ width:40%;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ position:absolute;
+ right:10%;
+ top:20%;
+}
+#container{
+margin-top: 8%;
+}
+
+.note{
+   font-size:18px;
+   color:white;
+}
+td{
+    color:white;
+    font-size:18px;
+}
+.box-out {
+      position:relative;
+      #border:solid 1px #555;
+      float:left;
+      padding:0px 10px;
+      top:450px;
+}
+.box-in {
+      position:absolute;
+      left:0;
+      top:0px;
+      right:0;
+      bottom:0;
+      margin:auto;}
+.title-in {
+      position:absolute;
+      top:240px;
+      left:0;
+      right:0;
+      margin:auto;
+      text-align:center;
+      height:50px;
+      line-height:50px;
+      font-size:18px;
+      color:white;
+    }
+.picture{
+    width:50%;
+}
+.num h1{
+color:white;
+}
+.num h2{
+color:white;
+}

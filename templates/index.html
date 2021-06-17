@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html"
+      xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>小回转项目数据可视化平台</title>
+    <link rel="stylesheet" href="static/css/main.css">
+    <script src="static/js/jquery.min.js"></script>
+    <script src="static/js/echarts.min.js"></script>
+</head>
+
+<body>
+<div>
+        <div id="title">小回转项目数据可视化平台</div>
+        <div id="top">
+            <input type="radio" name="player" value="1">第一名</input>
+            <input type="radio" name="player" value="2">第二名</input>
+            <input type="radio" name="player" value="3">第三名</input>
+            <input type="radio" name="player" value="4">第四名</input>
+        </div>
+        <script type="text/javascript">
+             $('input:radio').eq({{info.rank}}).attr('checked', 'true');
+             $(function(){
+              $(":radio").click(function(){
+               window.location.href=$(this).val();
+              });
+             });
+        </script>
+        <div id="left">
+            <img id = "image" class="picture" src="{{info.picture}}"/>
+        </div>
+        <div id = "center">
+            <table>
+                <tr> <td class="note"><strong>姓名：</strong></td><td id = "name">{{info.name}}</td> </tr>
+                <tr> <td class="note"><strong>编号：</strong></td><td id = "fiscode">{{info.fiscode}}</td> </tr>
+                <tr> <td class="note"><strong>性别：</strong></td><td id = "gender">{{info.gender}}</td> </tr>
+                <tr> <td class="note"><strong>年龄：</strong></td><td id = "age">{{info.age}}</td> </tr>
+                <tr> <td class="note"><strong>国籍：</strong></td><td id = "nation">{{info.nation}}</td> </tr>
+            </table>
+        </div>
+        <div id="right"></div>
+        <script>
+            var myChart=echarts.init(document.getElementById('right'),'dark');
+            var option={
+                    title:{
+                        text:"过弯时间与过弯编号"
+                    },
+                    tooltip:{
+                        trigger:'axis'
+                    },
+                    xAxis:{
+                        type:'category',
+                        data:[],
+                        name:'过弯编号'
+                    },
+                    yAxis:{
+                        type:'value',
+                        name:'过弯时间'
+                    },
+                    series: [{
+                        data: [],
+                        type: 'line',
+                        smooth: true,
+                        color:'#5470c6'
+                    }]
+            };
+            option['xAxis']['data']={{xydata.xData}};
+            option['series'][0]['data']={{xydata.yData}};
+            myChart.setOption(option);
+            window.onresize = function () {
+                    myChart.resize();
+                }
+        </script>
+
+        <div id="container">
+             {% for movie in movies %}
+            <div class="box-out" style="height:280px;width:400px;">
+            <video class="movie box-in" data-file="{{movie['file']}}" width="400" height="225" controls >
+                <source src="static/movies/{{movie['file']}}" type="video/mp4" />
+            </video>
+            <p class="title-in" >{{movie['title']}}</p>
+            </div>
+            {% endfor %}
+        </div>
+         <script type="text/javascript" src="static/js/movie.js"></script>
+</div>
+</body>
+</html>
